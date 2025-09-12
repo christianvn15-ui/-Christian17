@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Book Your Seat | Christian Van Niekerk</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Roboto, sans-serif;
+      background-color: #f9f9f9;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    header {
+      background-color: #0077b6;
+      color: white;
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.5em;
+    }
+
+    main {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    section {
+      margin-bottom: 50px;
+    }
+
+    h2 {
+      color: #023e8a;
+      border-bottom: 2px solid #ccc;
+      padding-bottom: 8px;
+      margin-bottom: 15px;
+    }
+
+    input {
+      display: block;
+      margin: 10px auto;
+      padding: 10px;
+      width: 90%;
+      max-width: 400px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 1em;
+    }
+
+    .event-link {
+      display: inline-block;
+      margin: 10px 15px;
+      padding: 10px 20px;
+      background-color: #90e0ef;
+      color: #023e8a;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background-color 0.3s ease;
+    }
+
+    .event-link:hover {
+      background-color: #48cae4;
+    }
+
+    footer {
+      background-color: #eeeeee;
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9em;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Christian Van Niekerk</h1>
+    <p>Reserve your seat for an upcoming event</p>
+  </header>
+
+  <main>
+    <section>
+      <h2>Your Details</h2>
+      <input type="email" id="email" placeholder="Email Address" required>
+      <input type="text" id="name" placeholder="First Name" required>
+      <input type="text" id="surname" placeholder="Last Name" required>
+      <input type="number" id="age" placeholder="Age" required>
+      <p>Please select an event below to complete your booking via email.</p>
+    </section>
+
+    <section>
+      <h2>Available Events</h2>
+      <a class="event-link" onclick="sendBookingEmail('12 October 2025 – Sasolburg')">12 Oct – Sasolburg</a>
+      <a class="event-link" onclick="sendBookingEmail('18 November 2025 – Bloemfontein')">18 Nov – Bloemfontein</a>
+      <a class="event-link" onclick="sendBookingEmail('05 December 2025 – Cape Town')">05 Dec – Cape Town</a>
+    </section>
+  </main>
+
+  <footer>
+    &copy; 2025 ChristianArtist.co.za — All rights reserved.
+  </footer>
+
+  <script>
+    function sendBookingEmail(eventDetails) {
+      const email = document.getElementById("email").value.trim();
+      const name = document.getElementById("name").value.trim();
+      const surname = document.getElementById("surname").value.trim();
+      const age = document.getElementById("age").value.trim();
+
+      if (!email || !name || !surname || !age) {
+        alert("Please fill in all fields before booking.");
+        return;
+      }
+
+      const subject = `Seat Booking Request: ${eventDetails}`;
+      const body = `Email: ${email}%0D%0AName: ${name}%0D%0ASurname: ${surname}%0D%0AAge: ${age}%0D%0AEvent: ${eventDetails}`;
+      const mailtoLink = `mailto:christianvn15@gmail.com?subject=${encodeURIComponent(subject)}&body=${body}`;
+
+      window.location.href = mailtoLink;
+    }
+  </script>
+
+</body>
+</html>
